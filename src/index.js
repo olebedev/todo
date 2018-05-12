@@ -14,7 +14,7 @@ const rootEl = document.getElementsByClassName('todoapp')[0];
 const swarm = new SwarmDB({
   storage: new Storage(),
   upstream: new Verbose('ws://0.0.0.0:31415'),
-  db: { name: 'default' },
+  db: { name: 'default', clockLen: 7 },
 });
 
 swarm
