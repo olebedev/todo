@@ -22,9 +22,9 @@ swarm
   .then(() => {
     console.log('initialized');
   })
-  .catch(err => {
-    console.error(err);
-  });
+  .catch(panic);
+
+swarm.client.panic = panic;
 
 ReactDOM.render(
   <App swarm={swarm} />,
@@ -43,4 +43,13 @@ if (module.hot) {
       rootEl,
     );
   });
+}
+
+function panic(err) {
+  console.error(err);
+  console.warn('the page will be reloaded in 5 seconds');
+  setTimeout(() => {
+    localStorage.clear();
+    window.location.reload();
+  }, 5000);
 }
