@@ -39,7 +39,6 @@ class App extends React.Component<{ swarm: SwarmDB }, { id: ?UUID }> {
 
   onHashChange = (): void => {
     const id = UUID.fromString(window.location.hash.slice(2));
-    console.log('hash changed to', id);
     if (!id.isError() && !id.isZero()) {
       this.setState({ id });
     } else {
