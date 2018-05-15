@@ -28,6 +28,10 @@ swarm
   .ensure()
   .then(() => {
     console.log('initialized');
+    window.addEventListener('focus', () => {
+      swarm.close();
+      swarm.open();
+    });
   })
   .catch(panic);
 
