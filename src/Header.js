@@ -7,7 +7,7 @@ import { UUID } from 'swarm-ron';
 
 import { addTask } from './graphql';
 
-export default class Header extends React.Component<{ id: UUID }> {
+export default class Header extends React.Component<{ id: string }> {
   onSubmit({
     add,
     id,
@@ -37,7 +37,10 @@ export default class Header extends React.Component<{ id: UUID }> {
         <h1>todos</h1>
         <GraphQL mutations={{ addTask }}>
           {({ mutations: { addTask: add }, uuid }) => (
-            <form onSubmit={event => this.onSubmit({ event, add, id: uuid() })}>
+            <form
+              onSubmit={event =>
+                uuid && this.onSubmit({ event, add, id: uuid() })
+              }>
               <input
                 className="new-todo"
                 placeholder="What needs to be done?"

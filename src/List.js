@@ -3,13 +3,12 @@
 import * as React from 'react';
 import { GraphQL } from 'swarm-react';
 import type { Mutation, Response } from 'swarm-react';
-import { UUID } from 'swarm-ron';
 
 import { query, updateTask, removeTask } from './graphql';
 import Task from './Task';
 import type { Item } from './graphql';
 
-export default class List extends React.Component<{ id: UUID }> {
+export default class List extends React.Component<{ id: string }> {
   onToggleAllClick({
     tasks,
     update,

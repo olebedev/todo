@@ -10,6 +10,12 @@ import { Verbose } from 'swarm-client/lib/connection';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+// workaround previous hash navigation
+(function() {
+  const prev = window.location.hash.replace(/^(#?\/?)/, '');
+  if (prev) window.history.pushState({}, document.title, `/todo/${prev}`);
+})();
+
 const rootEl = document.getElementsByClassName('todoapp')[0];
 
 const swarm = new SwarmDB({

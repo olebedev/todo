@@ -1,12 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import { UUID } from 'swarm-ron';
 import type { Mutation } from 'swarm-react';
 import type { Item } from './graphql';
 
 type Props = {
-  id: UUID,
+  id: string,
   update: Mutation,
   remove: Mutation,
   item: Item,

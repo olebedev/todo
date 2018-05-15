@@ -3,12 +3,11 @@
 import * as React from 'react';
 import { GraphQL } from 'swarm-react';
 import type { Response, Mutation } from 'swarm-react';
-import { UUID } from 'swarm-ron';
 
 import { getFooterInfo, setState, removeTask } from './graphql';
 import type { Item } from './graphql';
 
-export default class Footer extends React.Component<{ id: UUID }> {
+export default class Footer extends React.Component<{ id: string }> {
   onClearClick = ({
     items,
     remove,
