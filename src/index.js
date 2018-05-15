@@ -8,6 +8,7 @@ import { LocalStorage as Storage } from 'swarm-client';
 import { Verbose } from 'swarm-client/lib/connection';
 
 import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 const rootEl = document.getElementsByClassName('todoapp')[0];
 
@@ -31,6 +32,7 @@ ReactDOM.render(
   // $FlowFixMe
   rootEl,
 );
+registerServiceWorker();
 
 if (module.hot) {
   // $FlowFixMe
