@@ -8,15 +8,7 @@ import { UUID } from 'swarm-ron';
 import { addTask } from './graphql';
 
 export default class Header extends React.Component<{ id: string }> {
-  onSubmit({
-    add,
-    id,
-    event,
-  }: {
-    id: UUID,
-    event: Event,
-    add: Mutation,
-  }): void {
+  onSubmit({ add, id, event }: { id: UUID, event: Event, add: Mutation }): void {
     event.preventDefault();
     // $FlowFixMe
     const title = event.currentTarget.firstChild.value.trim();
@@ -37,15 +29,8 @@ export default class Header extends React.Component<{ id: string }> {
         <h1>todos</h1>
         <GraphQL mutations={{ addTask }}>
           {({ mutations: { addTask: add }, uuid }) => (
-            <form
-              onSubmit={event =>
-                uuid && this.onSubmit({ event, add, id: uuid() })
-              }>
-              <input
-                className="new-todo"
-                placeholder="What needs to be done?"
-                autoFocus
-              />
+            <form onSubmit={event => uuid && this.onSubmit({ event, add, id: uuid() })}>
+              <input className="new-todo" placeholder="What needs to be done?" autoFocus />
             </form>
           )}
         </GraphQL>

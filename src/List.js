@@ -9,13 +9,7 @@ import Task from './Task';
 import type { Item } from './graphql';
 
 export default class List extends React.Component<{ id: string }> {
-  onToggleAllClick({
-    tasks,
-    update,
-  }: {
-    tasks: Item[],
-    update: Mutation,
-  }): void {
+  onToggleAllClick({ tasks, update }: { tasks: Item[], update: Mutation }): void {
     const allChecked = !tasks.filter(i => !i.completed).length;
     tasks.forEach(i => {
       update({
@@ -48,10 +42,13 @@ export default class List extends React.Component<{ id: string }> {
                   {filtered.map(item => (
                     <Task
                       key={item.id}
-                      id={this.props.id}
-                      update={update}
-                      remove={remove}
                       item={item}
+                      toggle={() => {
+                        update({ tid: item.id, patch: { completed: !item.completed } });
+                      }}
+                      remove={() => {
+                        remove({ from: this.props.id, id: item.uuid });
+                      }}
                     />
                   ))}
                 </ul>
@@ -66,13 +63,7 @@ export default class List extends React.Component<{ id: string }> {
 
 function select(
   response: Response<{ tasks: Item[], state: { filter: string } }>,
-): {
-  filtered: Item[],
-  all: Item[],
-  allChecked: boolean,
-  update: Mutation,
-  remove: Mutation,
-} {
+): { filtered: Item[], all: Item[], allChecked: boolean, update: Mutation, remove: Mutation } {
   const {
     data,
     mutations: { updateTask: update, removeTask: remove },
@@ -81,9 +72,7 @@ function select(
   const allChecked = !all.filter(i => !i.completed).length;
   const filtered =
     data && data.state.filter
-      ? all.filter(
-          i => (data.state.filter === 'active' ? !i.completed : i.completed),
-        )
+      ? all.filter(i => (data.state.filter === 'active' ? !i.completed : i.completed))
       : all;
 
   return {

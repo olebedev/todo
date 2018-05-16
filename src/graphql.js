@@ -31,6 +31,7 @@ export const updateTask = gql`
     updated: set(id: $tid, payload: $patch)
   }
 `;
+
 export const addTask = gql`
   mutation AddTask($tid: UUID!, $task: Payload!, $listID: UUID!) {
     created: set(id: $tid, payload: $task)

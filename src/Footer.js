@@ -8,13 +8,7 @@ import { getFooterInfo, setState, removeTask } from './graphql';
 import type { Item } from './graphql';
 
 export default class Footer extends React.Component<{ id: string }> {
-  onClearClick = ({
-    items,
-    remove,
-  }: {
-    items: Item[],
-    remove: Mutation,
-  }): void => {
+  onClearClick = ({ items, remove }: { items: Item[], remove: Mutation }): void => {
     items.filter(i => i.completed).forEach(item => {
       remove({
         from: this.props.id,
@@ -37,7 +31,6 @@ export default class Footer extends React.Component<{ id: string }> {
         mutations={{ setState, removeTask }}>
         {resp => {
           const { selected, count, set, remove, items } = select(resp);
-
           return (
             <footer className="footer">
               <span className="todo-count">
@@ -97,9 +90,7 @@ function select({
   const selected = {
     [data ? data.state.filter || '' : '']: 'selected',
   };
-  const count = data
-    ? data.tasks.list.filter(item => !item.completed).length
-    : 0;
+  const count = data ? data.tasks.list.filter(item => !item.completed).length : 0;
   const items = data ? data.tasks.list : [];
   return { selected, count, set, remove, items };
 }
