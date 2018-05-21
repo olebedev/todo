@@ -5,6 +5,7 @@
   "homepage": "http://olebedev.github.io/todo",
   "dependencies": {
     "gh-pages": "^1.1.0",
+    "is-touch-device": "^1.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",

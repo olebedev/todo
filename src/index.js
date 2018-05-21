@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import isTouch from 'is-touch-device';
 
 import SwarmDB from 'swarm-db';
 import { LocalStorage as Storage } from 'swarm-client';
@@ -16,6 +17,7 @@ import { unregister } from './registerServiceWorker';
   if (prev) window.history.pushState({}, document.title, `/todo/${prev}`);
 })();
 
+document.body.dataset['touch'] = isTouch();
 const rootEl = document.getElementsByClassName('todoapp')[0];
 
 const swarm = new SwarmDB({
