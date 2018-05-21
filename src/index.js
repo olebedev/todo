@@ -8,7 +8,7 @@ import { LocalStorage as Storage } from 'swarm-client';
 import { Verbose } from 'swarm-client/lib/connection';
 
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
 
 // workaround previous hash navigation
 (function() {
@@ -42,7 +42,7 @@ ReactDOM.render(
   // $FlowFixMe
   rootEl,
 );
-registerServiceWorker();
+unregister();
 
 if (module.hot) {
   // $FlowFixMe

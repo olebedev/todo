@@ -19,6 +19,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "cp ./build/index.html ./build/404.html && gh-pages -d build"
+    "deploy": "cp ./build/index.html ./build/404.html && rm ./build/service-worker.js && gh-pages -d build"
   }
 }
