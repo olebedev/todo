@@ -11,13 +11,7 @@ import { Verbose } from 'swarm-client/lib/connection';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 
-// workaround previous hash navigation
-(function() {
-  const prev = window.location.hash.replace(/^(#?\/?)/, '');
-  if (prev) window.history.pushState({}, document.title, `/todo/${prev}`);
-})();
-
-document.body.dataset['touch'] = isTouch();
+window.document.body.dataset['touch'] = isTouch();
 const rootEl = document.getElementsByClassName('todoapp')[0];
 
 const swarm = new SwarmDB({
