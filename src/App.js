@@ -2,9 +2,8 @@
 
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import SwarmDB from 'swarm-db';
-import { UUID } from 'swarm-ron';
-import { Provider, GraphQL } from 'swarm-react';
+import SwarmDB, { UUID } from '@swarm/db';
+import { Provider, GraphQL } from '@swarm/react';
 
 import 'todomvc-common/base.css';
 import 'todomvc-app-css/index.css';

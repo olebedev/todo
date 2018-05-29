@@ -1,6 +1,6 @@
 // @flow
 import gql from 'graphql-tag';
-import { UUID } from 'swarm-ron';
+import { UUID } from '@swarm/db';
 
 // Local UUIDs are not affected to server's data
 const STATE = UUID.fromString('state').local();

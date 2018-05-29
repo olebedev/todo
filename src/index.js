@@ -3,10 +3,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import isTouch from 'is-touch-device';
-
-import SwarmDB from 'swarm-db';
-import { LocalStorage as Storage } from 'swarm-client';
-import { Verbose } from 'swarm-client/lib/connection';
+import SwarmDB, { LocalStorage as Storage, Verbose } from '@swarm/db';
 
 import App from './App';
 import { unregister } from './registerServiceWorker';

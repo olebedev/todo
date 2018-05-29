@@ -1,9 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { GraphQL } from 'swarm-react';
-import type { Mutation } from 'swarm-react';
-import { UUID } from 'swarm-ron';
+import { GraphQL } from '@swarm/react';
+import type { Mutation } from '@swarm/react';
+import { UUID } from '@swarm/db';
 
 import { addTask } from './graphql';
 
