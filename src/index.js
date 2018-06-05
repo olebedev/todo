@@ -6,7 +6,7 @@ import isTouch from 'is-touch-device';
 import SwarmDB, { LocalStorage as Storage, Verbose } from '@swarm/db';
 
 import App from './App';
-import { unregister } from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 window.document.body.dataset['touch'] = isTouch();
 const rootEl = document.getElementsByClassName('todoapp')[0];
@@ -35,7 +35,7 @@ ReactDOM.render(
   // $FlowFixMe
   rootEl,
 );
-unregister();
+registerServiceWorker();
 
 if (module.hot) {
   // $FlowFixMe
